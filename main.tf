@@ -33,7 +33,7 @@ resource "aws_security_group" "main" {
 resource "aws_db_parameter_group" "main" {
   name   = "${local.name_prefix}-pg"
   family = var.engine_family
-  tags = merge(local.tags, {Name = "${local.name_prefix}-pg"})
+
 }
 
 resource "aws_rds_cluster" "main" {
@@ -55,7 +55,7 @@ resource "aws_rds_cluster" "main" {
 
 resource "aws_rds_cluster_instance" "cluster_instances" {
   count              = var.instance_count
-  identifier         = "${local.name_prefix}-clusterinstance-${count.index+1}"
+  identifier         = "${local.name_prefix}-cluster-instance-${count.index+1}"
   cluster_identifier = aws_rds_cluster.main.id
   instance_class     = var.instance_class
   engine             = aws_rds_cluster.main.engine
