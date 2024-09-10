@@ -13,5 +13,5 @@ variable "vpc_id" {}
 variable "sg_ingress_cidr" {}
 variable "instance_count" {}
 variable "instance_class" {}
-
+variable "kms_key_id" {}
 

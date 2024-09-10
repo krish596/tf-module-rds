@@ -50,6 +50,8 @@ resource "aws_rds_cluster" "main" {
   vpc_security_group_ids = [aws_security_group.main.id]
   db_instance_parameter_group_name = aws_db_parameter_group.main.name
   tags = merge(local.tags, {Name = "${local.name_prefix}-cluster"})
+  storage_encrypted = true
+  kms_key_id = var.kms_key_id
 
 }
 
